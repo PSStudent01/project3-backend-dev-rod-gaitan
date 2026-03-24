@@ -17,8 +17,10 @@ const projectSchema = new mongoose.Schema({ // creates a new schema/blueprint fo
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: true // it is 'required',
   }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Project', projectSchema);
+
+

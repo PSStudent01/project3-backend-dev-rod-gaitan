@@ -16,8 +16,6 @@ connectDB(); // Connects app to database. Calls the function 'connectDB()' in 'c
 app.use(express.json()); // this middleware tells 'Express' to automatically parse incoming request bodies as JSON. 
                         // without this, when someone sends a POST request (to my API) with product data, 'req.body' would be 'undefined'.
 
-
-
 const PORT = process.env.PORT || 3001; // checks if there's a PORT variable defined in the .env file. IF there is one, it'll use it. ELSE, if there isn't one, it'll use default 3001.
 
 app.listen(PORT, () => { // this starts the server and starts listening for incoming API requests on that port.

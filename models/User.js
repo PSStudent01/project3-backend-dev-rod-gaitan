@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({ // creates a new schema/blueprint for t
 }, { timestamps: true}) // This 2nd argument closes of the schema definition
                         // - 'timestamps:' when set to true, it tells Mongoose to automatically add 2 fields to every document:
                         // -- 'createdAt'
-                        // -- updatedAt
+                        // -- 'updatedAt'
 
 userSchema.pre('save', async function(next) { // This is a 'pre-save' hook that runs automatically before saving a user to the database
                                             // so this function runs automatically every time a user is about to be saved

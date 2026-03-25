@@ -8,13 +8,19 @@ const app = express(); // - 'express()' = function that comes from the Express l
                         // When you call it, it creates a complete 'Express application object' and stores it in the variable 'app'.
                         // allowing 'app' to become sorta like UI upon which you can adapt functions (.use, .get, .post, .listen, etc) that create the methods you use with your API
                         // without this line, 'app' would just be 'undefined'.
-
+// Connect to DB
 connectDB(); // Connects app to database. Calls the function 'connectDB()' in 'connection.js' to establish a DB connection when the server starts.
 
 
 // Middleware
 app.use(express.json()); // this middleware tells 'Express' to automatically parse incoming request bodies as JSON. 
                         // without this, when someone sends a POST request (to my API) with product data, 'req.body' would be 'undefined'.
+
+
+//Routes
+app.use('/api/users', require('./routes/api/userRoutes'));
+app.use('/api/projects', require('./routes/api/projectRoutes'));
+
 
 const PORT = process.env.PORT || 3001; // checks if there's a PORT variable defined in the .env file. IF there is one, it'll use it. ELSE, if there isn't one, it'll use default 3001.
 

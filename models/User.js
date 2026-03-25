@@ -31,7 +31,8 @@ const userSchema = new mongoose.Schema({ // creates a new schema/blueprint for t
                         // -- 'createdAt'
                         // -- 'updatedAt'
 
-userSchema.pre('save', async function(next) { // This is a 'pre-save' hook that runs automatically before saving a user to the database
+userSchema.pre('save', async function(){
+//userSchema.pre('save', async function(next) { // This is a 'pre-save' hook that runs automatically before saving a user to the database
                                             // so this function runs automatically every time a user is about to be saved
                                             // use a regular function (not arrow function) because we need 'this' to refer to the user document being saved
                                             // it says "hey,whenever a save is about to happen, run this function first, and don't save until it's done"
@@ -39,7 +40,8 @@ userSchema.pre('save', async function(next) { // This is a 'pre-save' hook that 
                                             // paswords in plain text as in this case.
 
    // Only and only if password is NEW or has been CHNAGED, should it be hashed!!!!
-  if (!this.isModified('password')) return next();  // - 'this' refers to the user being saved
+  //if (!this.isModified('password')) return next();  // - 'this' refers to the user being saved
+  if (!this.isModified('password')) return 
                                                     // 'isModified('password')' = checks or it's true ONLY if the password field has changed
                                                         // ITC, IF the password was NOT changed, like if we're just updating username                 
                                                         // THEN we skip the hashing and call 'next()' to continue saving normally
@@ -49,9 +51,15 @@ userSchema.pre('save', async function(next) { // This is a 'pre-save' hook that 
                                         // 10 is the standard safe choice
   this.password = await bcrypt.hash(this.password, salt); // this takes the 'plain text password' plus the 'salt' and produces a 'hash'
                                                         // so what gets saved to MongoDB is highly complex hash...and never teh real password.
-  next(); // this tells Mongoose that that the 'pre-save' hook has ran and finished running its checks before saving a user to the database
+  //next(); // this tells Mongoose that that the 'pre-save' hook has ran and finished running its checks before saving a user to the database
             // without this the app will hang forever waiting!!!!!!!!!!!!!
 });
+
+// Instance method: compares submitted password with hashed password
+    userSchema.methods.isCorrectPassword = async function(password) {
+    return await bcrypt.compare(password, this.password);
+};
+
 
 module.exports = mongoose.model('User', userSchema); // this 1) creates the actual Model from the schema and 2) exports it
                                                     // 'User' is the model name, for which Mongoose will automatically create a collection called 'users' (lowercase + plural) 

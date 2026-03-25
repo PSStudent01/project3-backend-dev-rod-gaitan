@@ -33,7 +33,8 @@ function protect(req, res, next) {  // Defining a middleware function called 'pr
   }
 
   try { // try to attempt this code, but if somthing goes technaically wrong, jump to 'catch' to throw the proper error and don't crash"
-    const { data } = jwt.verify(token, secret, { maxAge: expiration }); // jwt.verify() does 2 things:
+    const { data } = jwt.verify(token, secret);
+    //const { data } = jwt.verify(token, secret, { maxAge: expiration }); // jwt.verify() does 2 things:
                                                                         // 1. Checks the token hasn't been tampered with using our 'secret key'
                                                                         // 2. Decodes the token and returns what was stored inside it
                                                                         // { maxAge: expiration } checks the token isn't older than 2 hours

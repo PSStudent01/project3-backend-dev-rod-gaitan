@@ -20,6 +20,7 @@ app.use(express.json()); // this middleware tells 'Express' to automatically par
 //Routes
 app.use('/api/users', require('./routes/api/userRoutes'));
 app.use('/api/projects', require('./routes/api/projectRoutes'));
+app.use('/api', require('./routes/api/taskRoutes'));
 
 
 const PORT = process.env.PORT || 3001; // checks if there's a PORT variable defined in the .env file. IF there is one, it'll use it. ELSE, if there isn't one, it'll use default 3001.

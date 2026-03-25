@@ -1,3 +1,4 @@
+// Project Schema
 
 const mongoose = require('mongoose'); // Imports 'mongoose' for the file to use to create the Project schema
 

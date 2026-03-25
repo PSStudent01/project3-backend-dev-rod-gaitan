@@ -1,3 +1,4 @@
+// User Schema:
 
 const mongoose = require('mongoose');  // Imports 'mongoose' for the file to use to create the User schema
 const bcrypt = require('bcrypt'); // Imports bcrypt, which is the library needed to 'hash' passwords

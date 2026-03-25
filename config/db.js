@@ -1,3 +1,6 @@
+
+// DB Connection:
+
 const mongoose = require('mongoose'); // Imports 'mongoose' for the file to use
 
 const connectDB = async () => { // Defining a function called 'connectDB'. 'async' signals 'await'.

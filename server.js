@@ -1,4 +1,4 @@
-
+// Entry point
 
 require('dotenv').config(); //this loads the  '.env' file at start up, so every file in the app has access to 'process.env' env variables
 const express = require('express');  // loads Express to your app after having been installed

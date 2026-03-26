@@ -7,7 +7,7 @@
 1. Clone the repo and run 'npm install'
 2. Create a '.env' file:
 - PORT=3001
-- MONGO_URI=mongodb+srv://equalizer0001_db_user:Password123@cluster0.x2q57bx.mongodb.net/?appName=Cluster0
+- MONGO_URI=MONGODB_URI=your_mongodb_connection_string_here. It's in my .env
 - JWT_SECRET=your_jwt_secret
 3. Run 'node server.js'
 
